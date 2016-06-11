@@ -9,9 +9,11 @@ import string
 
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 NUMBER_OF_IMAGES = 5
-UNDERCOLOR = 'rgba(0,0,0,0.3)'
-FILLCOLOR = 'rgba(251,251,255)'
+
 FONT_LOC = '%s/design_assets/impact.ttf'%DIR_PATH
+
+UNDERCOLOR = 'rgba(0,0,0)'
+FILLCOLOR = 'rgba(251,251,255)'
 
 v = pyvona.create_voice('GDNAJJ2TZFHSNAJAEYHA', 'vOgSfcz88uZxElIU2K5PLAgWfIJiajojTg81Wla1')
 
@@ -52,14 +54,6 @@ def bake(page_name,summary):
 		os.system("convert %s/oven/temp/slide_%s.png \( -clone 0 -blur 0x15 -resize 480x480\! \) \( -clone 0 -resize 480x480 \) -delete 0 \
 		    -gravity center -compose over -composite %s/oven/temp/slide_%s.png"%(DIR_PATH,counter,DIR_PATH,counter))
 
-		#generate caption files
-		os.system("convert -size %sx%s -background 'rgba(154,78,225,0.4)' -font %s \
-		    -fill '%s' -gravity West  \
-		    -bordercolor 'rgba(154,78,225,0.4)' -border 25x25 \
-		 caption:'%s' -flatten %s/oven/temp/caption_%s.png"%(480,480/3-70,FONT_LOC,FILLCOLOR,title.upper(),DIR_PATH,counter))
-
-		UNDERCOLOR = 'rgba(0,0,0)'
-		FILLCOLOR = 'rgba(251,251,255)'
 
 		os.system("convert -size %sx%s -stroke '%s' -strokewidth 2 -font %s \
                 -fill '%s' -gravity center -background transparent \
