@@ -50,6 +50,7 @@ def bake(page_name,summary):
 		
 		title = clean(title)
 		title = title.replace("=","")
+		title=title.upper()
 
 		#normalize the dimensions of the png files
 		os.system("convert %s/oven/temp/slide_%s.png \( -clone 0 -blur 0x15 -resize 480x480\! \) \( -clone 0 -resize 480x480 \) -delete 0 \
@@ -61,8 +62,8 @@ def bake(page_name,summary):
         #        caption:'%s' -flatten %s/oven/temp/caption_%s.png"%(480,480/3+40,UNDERCOLOR,FONT_LOC,FILLCOLOR,title.upper(),DIR_PATH,counter))
 
 		cmd= '''
-		convert -background '#0008' -fill white -stroke '%s' -strokewidth 2 -gravity west -size 480x200 -font %s caption:"%s"  %s/oven/temp/slide_%s.png +swap -gravity south -composite  %s/oven/temp/slide_%s.png
-		'''%(UNDERCOLOR,FONT_LOC,title,DIR_PATH,counter,DIR_PATH,counter)
+		convert -background '#0008' -fill white -gravity west -size 480x180 -font %s caption:"%s"  %s/oven/temp/slide_%s.png +swap -gravity south -composite  %s/oven/temp/slide_%s.png
+		'''%(FONT_LOC,title,DIR_PATH,counter,DIR_PATH,counter)
 		os.system(cmd)
 
 		#adding captions to slides
