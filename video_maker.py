@@ -58,7 +58,7 @@ def bake(page_name,summary):
 		os.system("convert -size %sx%s -stroke '%s' -strokewidth 2 -font %s \
                 -fill '%s' -gravity center -background transparent \
                 -bordercolor transparent -border 25x25 \
-                caption:'%s' -flatten %s/oven/temp/caption_%s.png"%(375,480/3-50,UNDERCOLOR,font_loc,FILLCOLOR,title.upper(),DIR_PATH,counter))
+                caption:'%s' -flatten %s/oven/temp/caption_%s.png"%(375,480/3-50,UNDERCOLOR,FONT_LOC,FILLCOLOR,title.upper(),DIR_PATH,counter))
 
 
 		#adding captions to slides
