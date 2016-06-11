@@ -6,6 +6,8 @@ import pyvona
 import re
 import sys
 import string
+import time
+start_time = time.time()
 
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 NUMBER_OF_IMAGES = 5
@@ -99,6 +101,7 @@ def main(query='New York'):
 	summary = summarize(text)
 
 	download_images(query,NUMBER_OF_IMAGES)
+	print "Generating Voice Now"
 	generate_voice(summary)
 	#bake the oven
 	bake(page_name[0],summary)
@@ -108,19 +111,24 @@ def main(query='New York'):
 	folder_name = folder_name.strip()
 	os.system("mv %s/oven/temp %s/oven/%s"%(DIR_PATH,DIR_PATH,folder_name))
 
-
+def big_short():
+	term_list = 'isro,pakistan,supertech,obama,arvind_kejriwal,carcinogen,bread,noida,monsoon,IPL,India'
+	for term in term_list.split(','):
+		main(term)
 
 
 if __name__ == '__main__':
+	big_short()
+	'''
 	subdirectories = os.listdir('%s/oven/'%(DIR_PATH))
 	query = sys.argv[1]
-	#download_images(query='android',NUMBER_OF_IMAGES)
 	if query in subdirectories:
-		os.system("rm -rf %s/oven/%s"%(DIR_PATH,query))
-		main(query)
+		pass
+		# os.system("rm -rf %s/oven/%s"%(DIR_PATH,query))
+		# main(query)
 	else:
 		main(query)
-	#bake()
-	#print summarize("asdasdasdasd(123).asdas[123123]dasdasd.asdasdasd.asdasd.123142134.234234234.234234423")
-	#generate_voice()
-	#wikivideo()
+	print int((time.time() - start_time)/60)
+	'''
+
+
