@@ -56,13 +56,17 @@ def bake(page_name,summary):
 		    -gravity center -compose over -composite %s/oven/temp/slide_%s.png"%(DIR_PATH,counter,DIR_PATH,counter))
 
 
-		os.system("convert -size %sx%s -stroke '%s' -strokewidth 2 -font %s \
-                -fill '%s' -gravity center -background transparent \
-                caption:'%s' -flatten %s/oven/temp/caption_%s.png"%(480,480/3,UNDERCOLOR,FONT_LOC,FILLCOLOR,title.upper(),DIR_PATH,counter))
+		#os.system("convert -size %sx%s -stroke '%s' -strokewidth 2 -font %s \
+        #        -fill '%s' -gravity center -background transparent \
+        #        caption:'%s' -flatten %s/oven/temp/caption_%s.png"%(480,480/3+40,UNDERCOLOR,FONT_LOC,FILLCOLOR,title.upper(),DIR_PATH,counter))
 
+		cmd= '''
+		convert -background '#0008' -fill white -stroke '%s' -strokewidth 2 -gravity west -size 480x200 -font %s caption:"%s"  %s/oven/temp/slide_%s.png +swap -gravity south -composite  %s/oven/temp/slide_%s.png
+		'''%(UNDERCOLOR,FONT_LOC,title,DIR_PATH,counter,DIR_PATH,counter)
+		os.system(cmd)
 
 		#adding captions to slides
-		os.system("composite -gravity South %s/oven/temp/caption_%s.png %s/oven/temp/slide_%s.png %s/oven/temp/slide_%s.png"%(DIR_PATH,counter,DIR_PATH,counter,DIR_PATH,counter))
+		#os.system("composite -gravity South %s/oven/temp/caption_%s.png %s/oven/temp/slide_%s.png %s/oven/temp/slide_%s.png"%(DIR_PATH,counter,DIR_PATH,counter,DIR_PATH,counter))
 
 	# os.system("ffmpeg -i %s/oven/temp/slide_%%d.png -vcodec mpeg4 %s/oven/temp/video_fast.mp4"%(DIR_PATH,DIR_PATH))
 	# os.system('ffmpeg -i %s/oven/temp/video_fast.mp4 -vf "setpts=(150)*PTS" %s/oven/temp/final_output.mp4'%(DIR_PATH,DIR_PATH))
