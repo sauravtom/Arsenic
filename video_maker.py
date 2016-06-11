@@ -57,19 +57,18 @@ def bake(page_name,summary):
 
 		os.system("convert -size %sx%s -stroke '%s' -strokewidth 2 -font %s \
                 -fill '%s' -gravity center -background transparent \
-                -bordercolor transparent -border 25x25 \
-                caption:'%s' -flatten %s/oven/temp/caption_%s.png"%(375,480/3-50,UNDERCOLOR,FONT_LOC,FILLCOLOR,title.upper(),DIR_PATH,counter))
+                caption:'%s' -flatten %s/oven/temp/caption_%s.png"%(480,480/3,UNDERCOLOR,FONT_LOC,FILLCOLOR,title.upper(),DIR_PATH,counter))
 
 
 		#adding captions to slides
 		os.system("composite -gravity South %s/oven/temp/caption_%s.png %s/oven/temp/slide_%s.png %s/oven/temp/slide_%s.png"%(DIR_PATH,counter,DIR_PATH,counter,DIR_PATH,counter))
 
-	os.system("ffmpeg -i %s/oven/temp/slide_%%d.png -vcodec mpeg4 %s/oven/temp/video_fast.mp4"%(DIR_PATH,DIR_PATH))
-	os.system('ffmpeg -i %s/oven/temp/video_fast.mp4 -vf "setpts=(150)*PTS" %s/oven/temp/final_output.mp4'%(DIR_PATH,DIR_PATH))
+	# os.system("ffmpeg -i %s/oven/temp/slide_%%d.png -vcodec mpeg4 %s/oven/temp/video_fast.mp4"%(DIR_PATH,DIR_PATH))
+	# os.system('ffmpeg -i %s/oven/temp/video_fast.mp4 -vf "setpts=(150)*PTS" %s/oven/temp/final_output.mp4'%(DIR_PATH,DIR_PATH))
 
 	#add narration to video
-	os.system("ffmpeg -i %s/oven/temp/final_output.mp4 -i %s/oven/temp/narration.mp3 \
-        %s/oven/temp/0final.mp4"%(DIR_PATH,DIR_PATH,DIR_PATH))
+	#os.system("ffmpeg -i %s/oven/temp/final_output.mp4 -i %s/oven/temp/narration.mp3 \
+    #    %s/oven/temp/0final.mp4"%(DIR_PATH,DIR_PATH,DIR_PATH))
 
 		
 def download_images(query,number='6'):
