@@ -41,8 +41,8 @@ def bake(page_name,summary):
 	for counter in range(NUMBER_OF_IMAGES+1):
 		try:
 			title = summary_list[counter]
-			if len(title) > 150:
-				title = title[:145] + '...'
+			if len(title) > 130:
+				title = title[:125] + '...'
 			if len(title) < len(page_name):
 				title = ""
 		except:
@@ -50,14 +50,13 @@ def bake(page_name,summary):
 		
 		title = clean(title)
 		title = title.replace("=","")
-		if len(title) > 100
 
 		#normalize the dimensions of the png files
 		os.system("convert %s/oven/temp/slide_%s.png \( -clone 0 -blur 0x15 -resize 480x480\! \) \( -clone 0 -resize 480x480 \) -delete 0 \
 		    -gravity center -compose over -composite %s/oven/temp/slide_%s.png"%(DIR_PATH,counter,DIR_PATH,counter))
 
 
-		os.system("convert -size %sx%s -stroke '%s' -strokewidth 1 -font %s \
+		os.system("convert -size %sx%s -stroke '%s' -strokewidth 2 -font %s \
                 -fill '%s' -gravity center -background transparent \
                 caption:'%s' -flatten %s/oven/temp/caption_%s.png"%(480,480/3,UNDERCOLOR,FONT_LOC,FILLCOLOR,title.upper(),DIR_PATH,counter))
 
