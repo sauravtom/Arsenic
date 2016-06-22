@@ -118,8 +118,8 @@ def big_short():
 
 
 if __name__ == '__main__':
-	big_short()
-	'''
+	#big_short()
+	
 	subdirectories = os.listdir('%s/oven/'%(DIR_PATH))
 	query = sys.argv[1]
 	if query in subdirectories:
@@ -129,6 +129,6 @@ if __name__ == '__main__':
 	else:
 		main(query)
 	print int((time.time() - start_time)/60)
-	'''
+	
 
 
