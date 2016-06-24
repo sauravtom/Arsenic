@@ -1,4 +1,5 @@
-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 import wikipedia
 import os
@@ -8,6 +9,22 @@ import sys
 import string
 import time
 start_time = time.time()
+
+from parse_rest.connection import register
+from parse_rest.datatypes import Object, GeoPoint
+from parse_rest.user import User
+
+parse_credentials = {
+    "application_id": "2wzSL2IYgy38Q378nNoKSJ23qqqSy5Uu1BW7Slax",
+    "rest_api_key": "JwPG9NCK67Yu1Ty96CAunYDs43oRcMsSoipu5qBH",
+    "master_key": "7bgt7qUcm5ein46DuaF1rYV5CboF6SbR9HfaiwoD",
+}
+
+register(parse_credentials["application_id"], parse_credentials["rest_api_key"])
+
+class arsenic(Object):
+    pass
+
 
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 NUMBER_OF_IMAGES = 5
@@ -111,24 +128,38 @@ def main(query='New York'):
 	folder_name = folder_name.strip()
 	os.system("mv %s/oven/temp %s/oven/%s"%(DIR_PATH,DIR_PATH,folder_name))
 
+	parse_update(folder_name)
+
 def big_short():
-	term_list = 'isro,pakistan,supertech,obama,arvind_kejriwal,carcinogen,bread,noida,monsoon,IPL,India'
+	term_list = 'isro,pakistan,supertech,obama,arvind_kejriwal,carcinogen,bread,noida,monsoon,IPL,India,madonna,godzilla,parse,facebook,google,snapchat,tesla,kindle,algorithm,hacking,delhi,paris,tokyo,sydney,montreal,toronto,barcelona,silicon_valley,amazon,flowers,photosynthesis'
 	for term in term_list.split(','):
 		main(term)
 
+def parse_update(folder_name):
+	
+	n=arsenic(
+		slide_1='http://orch.in/arsenic/%s/slide_1.png'%(folder_name),
+		slide_2='http://orch.in/arsenic/%s/slide_2.png'%(folder_name),
+		slide_3='http://orch.in/arsenic/%s/slide_3.png'%(folder_name),
+		slide_4='http://orch.in/arsenic/%s/slide_4.png'%(folder_name),
+		slide_5='http://orch.in/arsenic/%s/slide_5.png'%(folder_name),
+		narration_url='http://orch.in/arsenic/%s/narration.mp3'%(folder_name),
+		video_url = 'http://orch.in/arsenic/%s/video.mp4'%(folder_name),
+		tags='',
+		video_name= folder_name
+	    )
+	n.save()
 
 if __name__ == '__main__':
 	big_short()
-	'''
-	subdirectories = os.listdir('%s/oven/'%(DIR_PATH))
-	query = sys.argv[1]
-	if query in subdirectories:
-		pass
-		# os.system("rm -rf %s/oven/%s"%(DIR_PATH,query))
-		# main(query)
-	else:
-		main(query)
-	print int((time.time() - start_time)/60)
-	'''
+	# subdirectories = os.listdir('%s/oven/'%(DIR_PATH))
+	# query = sys.argv[1]
+	# if query in subdirectories:
+	# 	pass
+	# 	# os.system("rm -rf %s/oven/%s"%(DIR_PATH,query))
+	# 	# main(query)
+	# else:
+	# 	main(query)
+	# print int((time.time() - start_time)/60)
 
 
