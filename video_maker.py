@@ -162,4 +162,3 @@ if __name__ == '__main__':
 	# 	main(query)
 	# print int((time.time() - start_time)/60)
 
-
