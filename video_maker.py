@@ -131,7 +131,7 @@ def main(query='New York'):
 	parse_update(folder_name)
 
 def big_short():
-	term_list = 'madonna,godzilla,parse,facebook,google,snapchat,tesla,kindle,algorithm,hacking,delhi,paris,tokyo,sydney,montreal,toronto,barcelona,silicon_valley,amazon,flowers,photosynthesis'
+	term_list = 'book,notepad,kindle,battery,charger,bottle, cooler,stone,magma,lava,earth,pluto,sun,whiteboard,printer,cupboard,vase,table,chair,dropbox'
 	for term in term_list.split(','):
 		main(term)
 
@@ -144,7 +144,7 @@ def parse_update(folder_name):
 		slide_4='http://orch.in/arsenic/%s/slide_4.png'%(folder_name),
 		slide_5='http://orch.in/arsenic/%s/slide_5.png'%(folder_name),
 		narration_url='http://orch.in/arsenic/%s/narration.mp3'%(folder_name),
-		video_url = 'http://orch.in/arsenic/%s/video.mp4'%(folder_name),
+		video_url = 'http://orch.in/arsenic/%s/0final.mp4'%(folder_name),
 		tags='',
 		video_name= folder_name
 	    )
