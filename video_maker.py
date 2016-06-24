@@ -131,7 +131,7 @@ def main(query='New York'):
 	parse_update(folder_name)
 
 def big_short():
-	term_list = 'isro,pakistan,supertech,obama,arvind_kejriwal,carcinogen,bread,noida,monsoon,IPL,India,madonna,godzilla,parse,facebook,google,snapchat,tesla,kindle,algorithm,hacking,delhi,paris,tokyo,sydney,montreal,toronto,barcelona,silicon_valley,amazon,flowers,photosynthesis'
+	term_list = 'madonna,godzilla,parse,facebook,google,snapchat,tesla,kindle,algorithm,hacking,delhi,paris,tokyo,sydney,montreal,toronto,barcelona,silicon_valley,amazon,flowers,photosynthesis'
 	for term in term_list.split(','):
 		main(term)
 
